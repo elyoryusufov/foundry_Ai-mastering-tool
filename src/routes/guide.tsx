@@ -51,7 +51,7 @@ function Guide() {
         <ol className="list-decimal space-y-1 pl-5 text-muted">
           <li>Health, family, people you will not abandon — then the work.</li>
           <li>University exams when they land; Foundry flexes a week, does not die.</li>
-          <li>Build > consume. If a video has no commit that day, it did not count.</li>
+         <li>Build &gt; consume. If a video has no commit that day, it did not count.</li>
           <li>One flagship in public beats ten private notebooks.</li>
           <li>English writing is part of the job. Keep LEARNING.md.</li>
         </ol>
