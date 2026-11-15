@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { BookOpen, CalendarDays, Compass, GraduationCap, Hammer, Library } from "lucide-react";
+import { BookOpen, CalendarDays, Compass, GraduationCap, Hammer, Instagram, Library } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
@@ -10,6 +10,11 @@ const NAV = [
   { to: "/guide", label: "Playbook", icon: BookOpen },
   { to: "/university", label: "Uni", icon: GraduationCap },
   { to: "/resources", label: "Links", icon: Library },
+] as const;
+
+const SOCIAL_LINKS = [
+  { href: "https://x.com/elyoryusufov", label: "X" },
+  { href: "https://www.instagram.com/elyor_yusufov25/", label: "Instagram" },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -42,7 +47,16 @@ export function AppShell({ children }: { children: ReactNode }) {
               );
             })}
           </nav>
-          <p className="mt-6 text-[11px] leading-relaxed text-muted">3 hours · Mon–Fri · ship every Friday</p>
+          <div className="mt-6 border-t border-border pt-4">
+            <p className="text-[11px] leading-relaxed text-muted">Built by Elyor Yusufov · 3 hours a day, Monday–Friday</p>
+            <nav aria-label="Elyor Yusufov social profiles" className="mt-3 flex gap-4 text-xs text-muted">
+              {SOCIAL_LINKS.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="hover:text-primary">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
         </aside>
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="flex items-center justify-between border-b border-border px-4 py-3 md:hidden">
@@ -50,6 +64,12 @@ export function AppShell({ children }: { children: ReactNode }) {
               <div className="font-display text-lg text-primary">Foundry</div>
               <div className="text-[10px] uppercase tracking-[0.16em] text-muted">2-year AI path</div>
             </div>
+            <nav aria-label="Elyor Yusufov social profiles" className="flex items-center gap-3 text-xs text-muted">
+              <a href={SOCIAL_LINKS[0].href} target="_blank" rel="noreferrer" className="min-h-11 inline-flex items-center hover:text-primary">X</a>
+              <a href={SOCIAL_LINKS[1].href} target="_blank" rel="noreferrer" aria-label="Instagram" className="min-h-11 inline-flex items-center hover:text-primary">
+                <Instagram className="size-4" aria-hidden="true" />
+              </a>
+            </nav>
           </header>
           <main className="flex-1 px-4 py-6 pb-24 md:px-8 md:pb-10">{children}</main>
         </div>

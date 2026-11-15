@@ -4,19 +4,31 @@ import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { AppShell } from "@/components/app-shell";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Foundry";
+const APP_NAME = "Foundry AI";
+const SEO_DESCRIPTION =
+  "Foundry AI is Elyor Yusufov's self-directed, two-year roadmap for learning AI engineering from the fundamentals to building real systems.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: APP_NAME,
+  description: SEO_DESCRIPTION,
+  creator: {
+    "@type": "Person",
+    name: "Elyor Yusufov",
+    sameAs: ["https://x.com/elyoryusufov", "https://www.instagram.com/elyor_yusufov25/"],
+  },
+};
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "A two-year daily plan from zero to professional AI engineer — 3 hours, Monday to Friday.",
-      },
+      { title: "Foundry AI | Elyor Yusufov — AI Engineering Learning Roadmap" },
+      { name: "description", content: SEO_DESCRIPTION },
+      { name: "author", content: "Elyor Yusufov" },
+      { name: "keywords", content: "Foundry AI, Elyor Yusufov, AI engineering, learn AI, AI learning roadmap" },
       { name: "theme-color", content: "#0c0e12" },
     ],
     links: [
@@ -43,6 +55,7 @@ export const Route = createRootRoute({
       </head>
       <body>
         <PreviewHostBridge />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <AuthProvider>
           <AppShell>
             <Outlet />
